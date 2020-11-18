@@ -1,9 +1,6 @@
 <?php
 function extractDddNumero($value)
 {
-    $ddd = 'null';
-    $number = 'null';
-
     $onlyNumbers = preg_replace('/[^\d]/i', '', $value);
 
     if (strlen($onlyNumbers) < 10) {
@@ -22,7 +19,6 @@ function extractDddNumero($value)
         if (in_array($number[0], $initials, true)) {
             $number = '9' . $number;
         }
-
     }
 
     return [$ddd, $number];
