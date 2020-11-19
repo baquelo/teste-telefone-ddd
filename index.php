@@ -7,14 +7,14 @@ function extractDddNumero($value)
         throw new Exception('Número não possui a quantidade de dígitos necessárias');
     }
 
-    if (strlen($onlyNumbers) >= 11) {
+    $initials = ['6', '7', '8', '9'];
+
+    if (strlen($onlyNumbers) >= 11 && in_array($onlyNumbers[-8], $initials, true)) {
         $number = substr($onlyNumbers, -9);
         $ddd = substr($onlyNumbers, -11, 2);
     } else {
         $number = substr($onlyNumbers, -8);
         $ddd = substr($onlyNumbers, -10, 2);
-
-        $initials = ['6', '7','8','9'];
 
         if (in_array($number[0], $initials, true)) {
             $number = '9' . $number;
@@ -37,6 +37,10 @@ $numbers = [
     '55-11-987654321',
     '3186972676',
     '3156972676',
+    '01134264073',
+    '551134264073',
+    '0551134264073',
+    '+551134264073'
 ];
 
 foreach ($numbers as $number) {
