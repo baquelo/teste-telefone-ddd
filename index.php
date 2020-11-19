@@ -7,16 +7,16 @@ function extractDddNumero($value)
         throw new Exception('Número não possui a quantidade de dígitos necessárias');
     }
 
-    $initials = ['6', '7', '8', '9'];
+    $mobileInitials = ['6', '7', '8', '9'];
 
-    if (strlen($onlyNumbers) >= 11 && in_array($onlyNumbers[-8], $initials, true)) {
+    if (strlen($onlyNumbers) >= 11 && in_array($onlyNumbers[-8], $mobileInitials, true)) {
         $number = substr($onlyNumbers, -9);
         $ddd = substr($onlyNumbers, -11, 2);
     } else {
         $number = substr($onlyNumbers, -8);
         $ddd = substr($onlyNumbers, -10, 2);
 
-        if (in_array($number[0], $initials, true)) {
+        if (in_array($number[0], $mobileInitials, true)) {
             $number = '9' . $number;
         }
     }
