@@ -9,7 +9,7 @@ function extractDddNumero($value)
 
     $mobileInitials = ['6', '7', '8', '9'];
 
-    if (strlen($onlyNumbers) >= 11 && in_array($onlyNumbers[-8], $mobileInitials, true)) {
+    if (strlen($onlyNumbers) >= 11 && (in_array($onlyNumbers[-8], $mobileInitials, true) || $onlyNumbers[-9] === '9')) {
         $number = substr($onlyNumbers, -9);
         $ddd = substr($onlyNumbers, -11, 2);
     } else {
@@ -40,7 +40,8 @@ $numbers = [
     '01134264073',
     '551134264073',
     '0551134264073',
-    '+551134264073'
+    '+551134264073',
+    '11946776602'
 ];
 
 foreach ($numbers as $number) {
